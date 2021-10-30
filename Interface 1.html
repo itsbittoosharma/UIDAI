@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title> USER INTERFACE </title>
+</head>
+
+<style>
+    .box{
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    padding: 15px;
+    text-align: centerce;
+    font-size:10px;
+    }
+    </style>
+<body>
+  <h1> AADHAAR ADRESS UPDATE:</h1>
+     <form>
+        <fieldset>
+        <legend> USER DETAILS </legend>
+         <ul>
+          1. AADHAAR NUMBER:
+          <input type="number" name="number" placeholder="enter valid number"> <br><br><br>
+          2. USER NAME:
+          <input type="text" name="initial" placeholder="enter user name">
+           </ul> 
+         </fieldset>   <br> <br>
+         
+         <fieldset>
+             <legend> VERIFIER DETAILS </legend>
+             <ul>
+                 1.AADHAAR NUMBER:
+                 <input type="number" name="number" placeholder="enter valid number"> <br><br><br>
+                 2. VERIFIER NAME:
+                 <input type="text" name="initial1 " placeholder="enter verifier name">
+                 
+               
+
+             </ul>
+         </fieldset> <br> <br> 
+           
+        <fieldset>
+            <legend> AUTHENTIFICATION </legend>
+            <ul>
+                1. CLICK THE IMAGE TO GENERATE AND VERIFY CAPTCHA:
+          <div class="contain">
+		<input type="text" id="capt" readonly="readonly" >
+		<div id="refresh"> <img src="refresh.png" width="50px" onclick="cap()"></div>
+
+		<input type="text" id="textinput" placeholder="enter..">
+		<button onclick="validcap()">Check</button>
+          </div>
+           
+           
+           <script type="text/javascript">
+		function cap() {
+
+			var alpha=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
+			           ,'W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i',
+			           'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+			var a=alpha[Math.floor(Math.random()*62)];
+			var b=alpha[Math.floor(Math.random()*62)];
+			var c=alpha[Math.floor(Math.random()*62)];
+			var d=alpha[Math.floor(Math.random()*62)];
+			var e=alpha[Math.floor(Math.random()*62)];
+			var f=alpha[Math.floor(Math.random()*62)];
+
+			var sum=a + b + c + d + e + f;
+
+			document.getElementById("capt").value=sum;
+		}
+
+		function validcap() {
+			var string1 = document.getElementById('capt').value;
+			var string2 = document.getElementById('textinput').value;
+			if (string1 == string2){
+				alert("Form is validated Succesfully");
+				return true;
+			}
+			else {
+				alert("Please enter a valid captcha");
+				return false;
+			}
+		}
+
+
+	</script><br> <br>
+           2. GENERATE OTP
+            <div class="box">
+          Dear customer your OTP is <span id="otp"> </span>
+      </div>
+      <br><button type="button" onclick=" generate() "> Generate OTP </button>
+            <script>
+                function generate(){
+                  let num='1234567890';
+                    let OTP='';
+                    for(let i=0; i<4; i++){
+                        OTP +=num[Math.floor(Math.random()*10)];
+                    }
+                    document.getElementById('otp').innerHTML=OTP;
+                </script>
+
+            </ul>
+        </fieldset>   
+          
+    </form>
+      </body>
+</html>
+        
